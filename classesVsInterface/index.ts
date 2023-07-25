@@ -11,11 +11,11 @@ class Human {
 }
 
 interface Developer {
-  writeCode();
+  writeCode(): void;
 }
 
 interface Poet {
-  writePoems();
+  writePoems(): void;
 }
 
 class Brendan extends Human implements Developer {
