@@ -23,7 +23,9 @@ class Factory {
       PC: new PC(),
       Laptop: new Laptop(),
     };
-    return factoryMapper?.[type];
+    const generateInstance = (className) => new className();
+    // return factoryMapper?.[type];
+    return generateInstance(type);
   }
 }
 
