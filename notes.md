@@ -10,3 +10,5 @@ Tight coupling of UI and data - MVC solved
 
 -> is-a relationship - class, behaviour- create an interface
 -> POLYMORPHISM - ability to call a method WITHOUT knowing the exact type
+
+-> Factory outsource the creation of object
