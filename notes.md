@@ -12,3 +12,7 @@ Tight coupling of UI and data - MVC solved
 -> POLYMORPHISM - ability to call a method WITHOUT knowing the exact type
 
 -> Factory outsource the creation of object
+
+### THIRD LECTURE
+
+-> Base class becomes the factory having factory method(create computer)

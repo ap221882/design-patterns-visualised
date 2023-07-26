@@ -5,27 +5,16 @@ class Computer {
   }
 }
 
-class PC extends Computer {
-  makeComputer(cpu, ram, storage, display) {
-    this.description = `Dell PC: CPU ${cpu}, RAM ${ram}, Storage ${storage}, DISPLAY ${display}`;
-  }
-}
-
-class Laptop extends Computer {
-  makeComputer(cpu, ram, storage, display) {
-    this.description = `Dell Laptop: CPU ${cpu}, RAM ${ram}, Storage ${storage}, DISPLAY ${display}`;
-  }
-}
-
 class Factory {
   getComputer(type) {
     const factoryMapper = {
       PC: new PC(),
       Laptop: new Laptop(),
     };
-    const generateInstance = (className) => new className();
-    // return factoryMapper?.[type];
-    return generateInstance(type);
+    const module = require(`${type}.js`);
+    const computer = new module();
+
+    return computer;
   }
 }
 
