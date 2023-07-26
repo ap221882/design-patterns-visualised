@@ -1,17 +1,6 @@
-class Computer {
-  description;
-  getInfo() {
-    return this.description;
-  }
-}
-
 class Factory {
   getComputer(type) {
-    const factoryMapper = {
-      PC: new PC(),
-      Laptop: new Laptop(),
-    };
-    const module = require(`${type}.js`);
+    const module = require(`./computers/${type}.js`);
     const computer = new module();
 
     return computer;
@@ -47,3 +36,5 @@ const order = new Order();
 computer = order.placeOrder("PC", 4, 16, 512, 16);
 
 console.log(computer.getInfo());
+
+module.exports = { Computer };
