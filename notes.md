@@ -16,3 +16,4 @@ Tight coupling of UI and data - MVC solved
 ### THIRD LECTURE
 
 -> Base class becomes the factory having factory method(create computer)
+-> Ole Johan Dal invented OOP, did'nt called OOP (Alen K created SmallTalk called in OOP)
