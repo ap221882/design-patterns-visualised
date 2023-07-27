@@ -17,3 +17,6 @@ Tight coupling of UI and data - MVC solved
 
 -> Base class becomes the factory having factory method(create computer)
 -> Ole Johan Dal invented OOP, did'nt called OOP (Alen K created SmallTalk called in OOP)
+-> STATEFUL classes don't need to be singleton
+
+### FOURTH LECTURE
