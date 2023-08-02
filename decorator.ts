@@ -1,3 +1,27 @@
+function cache<This>(
+  toBeCachedFunction: (arg: number) => boolean,
+  context: ClassMethodDecoratorContext<This>
+): (arg: number) => boolean {
+  const cache: Record<string, boolean> = {};
+  const methodName = String(context.name);
+
+  function cachedFunction(this: This, arg: any): boolean {
+    console.log(`ENTERING ${methodName}`);
+
+    if (cache[arg]) {
+      console.log("returned from cache");
+      console.log(`EXITING ${methodName}`);
+      return cache[arg];
+    }
+    cache[arg] = toBeCachedFunction.call(this, arg);
+    console.log("not returned from cache");
+    console.log(`EXITING ${methodName}`);
+    return cache[arg];
+  }
+
+  return cachedFunction;
+}
+
 class Prime {
   @cache
   public isPrime(value: number): boolean {
@@ -6,26 +30,6 @@ class Prime {
       if (value % div == 0) return false;
     return true;
   }
-}
-
-function cache(
-  toBeCachedFunction: (arg: number) => boolean,
-  context: ClassMethodDecoratorContext
-): (arg: number) => boolean {
-  const cache: Record<string, boolean> = {};
-
-  function cachedFunction(arg: number): boolean {
-    console.log(cache);
-
-    if (cache[arg]) {
-      console.log("returned from cache");
-      return cache[arg];
-    }
-    cache[arg] = toBeCachedFunction(arg);
-    return cache[arg];
-  }
-
-  return cachedFunction;
 }
 
 const prime: Prime = new Prime();
