@@ -8,21 +8,16 @@ class Prime {
   }
 }
 
-function cache(
-  toBeCachedFunction: (arg: number) => boolean,
-  context: ClassMethodDecoratorContext
-): (arg: number) => boolean {
-  const cache: Record<string, boolean> = {};
+function cache(target: any, property: string, descriptor: PropertyDescriptor) {
+  const cache = new Map();
+  const original: Function = descriptor.value;
+  console.log(cache);
 
-  function cachedFunction(arg: number): boolean {
-    if (cache[arg]) {
-      return cache[arg];
-    }
-    cache[arg] = toBeCachedFunction(arg);
-    return cache[arg];
-  }
-
-  return cachedFunction;
+  descriptor.value = function (arg: any) {
+    console.log(cache);
+    return cache.get(arg) ?? cache.set(arg, original.call(this, arg)).get(arg);
+  };
+  return descriptor;
 }
 
 const prime: Prime = new Prime();
