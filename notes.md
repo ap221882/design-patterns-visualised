@@ -20,3 +20,5 @@ Tight coupling of UI and data - MVC solved
 -> STATEFUL classes don't need to be singleton
 
 ### FOURTH LECTURE
+
+VISITOR, FLYWEIGHT, BRIDGE left
